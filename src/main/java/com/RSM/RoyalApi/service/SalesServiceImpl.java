@@ -97,4 +97,9 @@ public class SalesServiceImpl implements SalesService{
         }
         salesRepository.deleteById(id);
     }
+
+    @Override
+    public Double getCustomerOldBalance(String customerName) {
+        return 0.0;
+    }
 }

@@ -1,6 +1,8 @@
 package com.RSM.RoyalApi.controller;
 
 import com.RSM.RoyalApi.entity.Sale;
+import com.RSM.RoyalApi.repository.SalesPaymentRepository;
+import com.RSM.RoyalApi.service.AdvanceLogicMethodsService;
 import com.RSM.RoyalApi.service.SalesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import java.util.UUID;
 public class SalesController {
 
     private final SalesService salesService;
+    private final AdvanceLogicMethodsService advanceLogicMethodsService;
 
     @PostMapping
     public Sale addSalesBill(@RequestBody Sale sale){
@@ -39,6 +42,11 @@ public class SalesController {
     @DeleteMapping("/{id}")
     public void deleteSaleBill(@PathVariable UUID id){
         salesService.deleteSalesBill(id);
+    }
+
+    @GetMapping("/balance/{custName}")
+    public Double getBalanceOfCust(@PathVariable String custName){
+        return advanceLogicMethodsService.getCustomerOldBalance(custName);
     }
 
 

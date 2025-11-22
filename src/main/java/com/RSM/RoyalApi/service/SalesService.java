@@ -12,4 +12,5 @@ public interface SalesService {
     public Sale updateSalesBill(UUID id, Sale sale);
     public void deleteSalesBill(UUID id);
 
+    Double getCustomerOldBalance(String customerName);
 }
